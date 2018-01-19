@@ -148,7 +148,7 @@ public:
         for (int i = 0; i < _max_task_count; i ++) {
             FsmTask *task = _tasks[i];
 
-            if (task) {
+            if (task && task->_state == FSM_STATE_INVALID) {
                 task->init();
                 task->_state = FSM_STATE_INITIALIZED;
             }
