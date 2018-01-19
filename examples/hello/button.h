@@ -22,8 +22,7 @@ License along with this program.  If not, see
 #define BTN_PIN (2)
 
 #define BTN_WAIT_DOWN (FSM_STATE_USERDEF + 1)
-#define BTN_CHECK_DOWN (FSM_STATE_USERDEF + 2)
-#define BTN_WAIT_UP (FSM_STATE_USERDEF + 3)
+#define BTN_WAIT_UP (FSM_STATE_USERDEF + 2)
 
 extern LedTask ledTask;
 
@@ -41,22 +40,15 @@ public:
   virtual void in_state(char state) {
     switch (state) {
     case BTN_WAIT_DOWN:
-      if (digitalRead(BTN_PIN) == 0) {
-        this->delay(100, BTN_CHECK_DOWN);
-      }
-      break;
-
-    case BTN_CHECK_DOWN:
-      if (digitalRead(BTN_PIN) == 0) {
+      if (digitalRead(BTN_PIN) == LOW) {
         ledTask.gotoStateForce(ledTask.isOn() ? LED_OFF : LED_ON);
+        this->delay(50, BTN_WAIT_UP);
       }
-
-      this->gotoState(BTN_WAIT_UP);
       break;
 
     case BTN_WAIT_UP:
-      if (digitalRead(BTN_PIN) != 0) {
-        this->delay(100, BTN_CHECK_DOWN);
+      if (digitalRead(BTN_PIN) == HIGH) {
+        this->delay(50, BTN_WAIT_DOWN);
       }
       break;
 
