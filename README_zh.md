@@ -61,7 +61,7 @@ void setup() {
 }
 
 void loop() {
-    // let fsmOs schedules the tasks repeatly
+    // let fsmOs schedules the tasks repeatedly
     fsmOs.loop();
 }
 ```
@@ -84,5 +84,5 @@ void loop() {
 [hello项目](https://github.com/qiwenmin/fsmos/tree/master/examples/hello)演示了如何使用FsmTask和FsmOs：
 
 * [LedTask](https://github.com/qiwenmin/fsmos/blob/master/examples/hello/led.h)演示了`init`、`on_state_change`、`gotoState`和`delay`的用法。
-* [ButtonTask](https://github.com/qiwenmin/fsmos/blob/master/examples/hello/button.h)演示了`init`、`in_state`、`gotoStateForce`和`delay`的用法。
+* [ButtonTask](https://github.com/qiwenmin/fsmos/blob/master/examples/hello/button.h)演示了`init`、`in_state`、`gotoState`、`gotoStateForce`和`delay`的用法。
 * [主程序](https://github.com/qiwenmin/fsmos/blob/master/examples/hello/hello.ino)演示了添加、初始化和调度任务。
