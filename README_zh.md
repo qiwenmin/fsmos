@@ -2,7 +2,7 @@
 
 FSMOS是一个基于有限状态机（FMS）的嵌入式操作系统，简单小巧。目前支持Arduino和Linux/macOS平台。
 
-有一个非常简单的helloworld程序，演示了如何使用FSMOS：[fsmos-hello](https://github.com/qiwenmin/fsmos-hello)。
+`examples`目录中的代码演示了如何使用FSMOS。
 
 ## 关于有限状态机
 
@@ -81,8 +81,8 @@ void loop() {
 * `void gotoStateForce(char state)` - 将任务迁移到新的状态。如果任务当前正在延时等待中，则立即取消延时等待，并设置新的状态。
 * `void delay(unsigned long timeout, char new_state)` - 延时`timeout`毫秒后，将任务迁移到`new_state`状态。
 
-[fsmos-hello项目](https://github.com/qiwenmin/fsmos-hello)演示了如何使用FsmTask和FsmOs：
+[hello项目](https://github.com/qiwenmin/fsmos/tree/master/examples/hello)演示了如何使用FsmTask和FsmOs：
 
-* [LedTask](https://github.com/qiwenmin/fsmos-hello/blob/master/led.h)演示了`init`、`on_state_change`、`gotoState`和`delay`的用法。
-* [ButtonTask](https://github.com/qiwenmin/fsmos-hello/blob/master/button.h)演示了`init`、`in_state`、`gotoStateForce`和`delay`的用法。
-* [主程序](https://github.com/qiwenmin/fsmos-hello/blob/master/fsmos-hello.ino)演示了添加、初始化和调度任务。
+* [LedTask](https://github.com/qiwenmin/fsmos/blob/master/examples/hello/led.h)演示了`init`、`on_state_change`、`gotoState`和`delay`的用法。
+* [ButtonTask](https://github.com/qiwenmin/fsmos/blob/master/examples/hello/button.h)演示了`init`、`in_state`、`gotoStateForce`和`delay`的用法。
+* [主程序](https://github.com/qiwenmin/fsmos/blob/master/examples/hello/hello.ino)演示了添加、初始化和调度任务。
