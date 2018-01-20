@@ -26,7 +26,7 @@ unsigned long millis();
 #endif // ARDUINO
 
 
-#define FSM_STATE_INVALID (-1)
+#define FSM_STATE_INVALID ((char)-1)
 #define FSM_STATE_INITIALIZED (0)
 #define FSM_STATE_USERDEF (10)
 
