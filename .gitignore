@@ -31,3 +31,6 @@ fsmos
 *.exe
 *.out
 *.app
+
+# IDE and editor
+.vscode/
