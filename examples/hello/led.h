@@ -32,7 +32,7 @@ public:
     this->gotoState(LED_ON);
   };
 
-  virtual bool on_state_change(char new_state, char /*old_state*/) {
+  virtual bool on_state_change(int8_t new_state, int8_t /*old_state*/) {
     switch(new_state) {
     case LED_ON:
       digitalWrite(LED_PIN, HIGH);
@@ -51,7 +51,7 @@ public:
     return true;
   };
 
-  virtual void in_state(char) {};
+  virtual void in_state(int8_t) {};
 
   bool isOn() { return this->_is_on; };
 private:

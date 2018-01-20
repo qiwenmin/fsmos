@@ -11,7 +11,7 @@ public:
     this->gotoState(LED_ON);
   };
 
-  virtual bool on_state_change(char new_state, char) {
+  virtual bool on_state_change(int8_t new_state, int8_t) {
     if (new_state == LED_OFF) {
       digitalWrite(LED_PIN, LOW);
       this->delay(500, LED_ON);
@@ -23,7 +23,7 @@ public:
     return true;
   };
 
-  virtual void in_state(char) {};
+  virtual void in_state(int8_t) {};
 };
 
 Blinker blinker;

@@ -69,17 +69,17 @@ void loop() {
 定义FsmTask的子类时，需要实现下列三个方法：
 
 * `virtual void init()` - 执行FsmOs实例的`init()`方法时被调用。这里适合写任务的初始化代码。
-* `virtual bool on_state_change(char new_state, char old_state)` - 在任务调度被调度时，如果需要进行状态迁移，此方法被调用。
+* `virtual bool on_state_change(int8_t new_state, int8_t old_state)` - 在任务调度被调度时，如果需要进行状态迁移，此方法被调用。
   * `new_state` - 要迁移到的新状态
   * `old_state` - 老状态
   * 返回值 - 如果允许FsmOs将任务设置为新状态，返回`true`，否则返回`false`。正常情况下都应该返回`true`。
-* `virtual void in_state(char state)` - 任务调度过程中，此方法会被重复调用，参数为任务的当前状态。
+* `virtual void in_state(int8_t state)` - 任务调度过程中，此方法会被重复调用，参数为任务的当前状态。
 
 此外，任务还提供了一些状态迁移的方法：
 
-* `void gotoState(char state)` - 将任务迁移到新的状态。如果任务当前正在延时等待中，调用此方法无效果。
-* `void gotoStateForce(char state)` - 将任务迁移到新的状态。如果任务当前正在延时等待中，则立即取消延时等待，并设置新的状态。
-* `void delay(unsigned long timeout, char new_state)` - 延时`timeout`毫秒后，将任务迁移到`new_state`状态。
+* `void gotoState(int8_t state)` - 将任务迁移到新的状态。如果任务当前正在延时等待中，调用此方法无效果。
+* `void gotoStateForce(int8_t state)` - 将任务迁移到新的状态。如果任务当前正在延时等待中，则立即取消延时等待，并设置新的状态。
+* `void delay(unsigned long timeout, int8_t new_state)` - 延时`timeout`毫秒后，将任务迁移到`new_state`状态。
 
 [hello项目](https://github.com/qiwenmin/fsmos/tree/master/examples/hello)演示了如何使用FsmTask和FsmOs：
 

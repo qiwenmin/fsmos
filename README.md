@@ -79,7 +79,7 @@ of FsmTask:
 * `virtual void init()` - when executing `init()` method of the FsmOs instance,
   this method is called. The initialization codes of the task should be in this
   method.
-* `virtual bool on_state_change(char new_state, char old_state)` - while task
+* `virtual bool on_state_change(int8_t new_state, int8_t old_state)` - while task
   scheduling, if the task should change from one state to another, this method
   is called.
   * `new_state` - the state will be changed to
@@ -87,17 +87,17 @@ of FsmTask:
   * returns - if the task accepts the change, `true` should be returned,
     otherwise `false` should be returned. Under normal circumstances, `true`
     should be returned.
-* `virtual void in_state(char state)` - while scheduling, this method is called
+* `virtual void in_state(int8_t state)` - while scheduling, this method is called
   repeatedly with the current state as the argument.
 
 In addition, FsmTask also provides some methods for changing state:
 
-* `void gotoState(char state)` - change to the new state. If the task is
+* `void gotoState(int8_t state)` - change to the new state. If the task is
   waiting for a delay timeout, this method does nothing.
-* `void gotoStateForce(char state)` - change to the new state forcibly. If the
+* `void gotoStateForce(int8_t state)` - change to the new state forcibly. If the
   task is waiting for a delay timeout, the delay is canceled and the new
   state is set.
-* `void delay(unsigned long timeout, char new_state)` - change to the new state
+* `void delay(unsigned long timeout, int8_t new_state)` - change to the new state
   after the delay of `timeout` milliseconds.
 
 [hello project](https://github.com/qiwenmin/fsmos/tree/master/examples/hello)

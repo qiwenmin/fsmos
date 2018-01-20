@@ -26,7 +26,7 @@ unsigned long millis();
 #endif // ARDUINO
 
 
-#define FSM_STATE_INVALID ((char)-1)
+#define FSM_STATE_INVALID (-1)
 #define FSM_STATE_INITIALIZED (0)
 #define FSM_STATE_USERDEF (10)
 
@@ -45,14 +45,14 @@ public:
 
     virtual void init() = 0;
 
-    virtual bool on_state_change(char new_state, char old_state) = 0;
-    virtual void in_state(char state) = 0;
+    virtual bool on_state_change(int8_t new_state, int8_t old_state) = 0;
+    virtual void in_state(int8_t state) = 0;
 
-    void gotoState(char new_state) {
+    void gotoState(int8_t new_state) {
         this->_new_state = new_state;
     };
 
-    void gotoStateForce(char new_state) {
+    void gotoStateForce(int8_t new_state) {
         if (this->_is_waiting) {
             this->_is_waiting = false;
             this->_waiting_start_at = 0;
@@ -63,7 +63,7 @@ public:
         this->_new_state = new_state;
     };
 protected:
-    void delay(unsigned long timeout, char newState) {
+    void delay(unsigned long timeout, int8_t newState) {
         this->_is_waiting = true;
 
         this->_waiting_start_at = millis();
@@ -71,13 +71,13 @@ protected:
         this->_waiting_finish_state = newState;
     };
 private:
-    char _state;
-    char _new_state;
+    int8_t _state;
+    int8_t _new_state;
 
     bool _is_waiting;
     unsigned long _waiting_start_at;
     unsigned long _waiting_duration;
-    char _waiting_finish_state;
+    int8_t _waiting_finish_state;
 
     // return true if waiting for timeout
     bool processWaiting() {
