@@ -133,7 +133,7 @@ public:
         return freeIdx;
     };
 
-    int deleteTask(FsmTask *task) {
+    int removeTask(FsmTask *task) {
         int result = findTaskByPtr(task);
 
         if (result != -1) {
