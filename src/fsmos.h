@@ -162,13 +162,16 @@ public:
             if (task) {
                 if (!task->processWaiting()) {
                     if (task->_new_state != FSM_STATE_INVALID) {
-                        if (task->on_state_change(task->_new_state, task->_state)) {
-                            task->_state = task->_new_state;
-                            task->_new_state = FSM_STATE_INVALID;
+                        int8_t new_state = task->_new_state;
+                        task->_new_state = FSM_STATE_INVALID;
+                        if (task->on_state_change(new_state, task->_state)) {
+                            task->_state = new_state;
+                        } else {
+                            task->_new_state = new_state;
                         }
+                    } else {
+                        task->in_state(task->_state);
                     }
-
-                    task->in_state(task->_state);
                 }
             }
         }
