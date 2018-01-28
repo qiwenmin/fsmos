@@ -22,7 +22,7 @@ License along with this program.  If not, see
 #ifndef ARDUINO
 unsigned long millis();
 #else // ARDUINO
-#include <arduino.h>
+#include <Arduino.h>
 #endif // ARDUINO
 
 
