@@ -23,6 +23,8 @@ License along with this program.  If not, see
 extern "C" {
 #endif // __cplusplus
 
+uint32_t millis();
+
 #define FO_STATE_INVALID (-1)
 #define FO_STATE_INIT (0)
 #define FO_STATE_TASK_DEF_BEGIN (1)
@@ -45,7 +47,9 @@ struct fo_task {
 
 typedef uint8_t FO_TASK_SIZE_TYPE;
 
-void fo_init(FO_TASK_SIZE_TYPE max_tasks);
+#define FO_INIT(max_tasks) \
+    struct fo_task fo_tasks[max_tasks];\
+    FO_TASK_SIZE_TYPE fo_tasks_capacity = max_tasks;
 
 fo_task_ptr fo_create_task(fo_task_func t_func);
 void fo_loop();

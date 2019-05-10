@@ -27,9 +27,9 @@ void blink_task_f(fo_task_ptr t, FO_STATE, FO_STATE new_state) {
   }
 }
 
-void setup() {
-  fo_init(1);
+FO_INIT(1)
 
+void setup() {
   fo_create_task(blink_task_f);
 }
 

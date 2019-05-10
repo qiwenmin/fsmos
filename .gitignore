@@ -32,5 +32,16 @@ fsmos
 *.out
 *.app
 
+# stm8 example
+*.asm
+*.cdb
+*.ihx
+*.lk
+*.lst
+*.map
+*.rel
+*.rst
+*.sym
+
 # IDE and editor
 .vscode/
