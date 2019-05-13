@@ -14,6 +14,10 @@ License along with this program.  If not, see
 <http://www.gnu.org/licenses/>.
 */
 
+#ifdef ARDUINO
+#include <Arduino.h>
+#endif // ARDUINO
+
 #include "fsmosc.h"
 
 // SDCC STM8

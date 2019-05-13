@@ -23,7 +23,9 @@ License along with this program.  If not, see
 extern "C" {
 #endif // __cplusplus
 
+#ifndef ARDUINO
 uint32_t millis();
+#endif // ARDUINO
 
 #define FO_STATE_INVALID (-1)
 #define FO_STATE_INIT (0)
